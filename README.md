@@ -275,6 +275,6 @@ Response body:
 <h2 id="feedback"> :diamond_shape_with_a_dot_inside: Feedback</h2>
 
 <p align=""> 
-  Feel free to send feedback on [Twitter](https://twitter.com/GSreemanth) or [file an issue](https://github.com/SreemanthG/webhooks-microservice-dyteissues/new). Feature requests are always welcome. You can contact me at sreemanth2001@gmail.com
+  Feel free to send feedback on [Twitter](https://twitter.com/GSreemanth) or [file an issue](https://github.com/SreemanthG/webhooks-microservice-dyte/issues/new). Feature requests are always welcome. You can contact me at sreemanth2001@gmail.com
 </p>
 
