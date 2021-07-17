@@ -1,42 +1,280 @@
 [![Moleculer](https://badgen.net/badge/Powered%20by/Moleculer/0e83cd)](https://moleculer.services)
 
-# webhooks-microservice
-This is a [Moleculer](https://moleculer.services/)-based microservices project. Generated with the [Moleculer CLI](https://moleculer.services/docs/0.14/moleculer-cli.html).
+<p align="center"> 
+  <img src="images/logo.png" alt="Webhooks Microservice Logo" height="80px">
+</p>
+<h1 align="center"> Webhooks Microservice </h1>
+<h3 align="center"> A Webhooks Microservice using Node and Moleculer </h3>  
 
-## Usage
-Start the project with `npm run dev` command. 
-After starting, open the http://localhost:3000/ URL in your browser. 
-On the welcome page you can test the generated services via API Gateway and check the nodes & services.
+</br>
 
-In the terminal, try the following commands:
-- `nodes` - List all connected nodes.
-- `actions` - List all registered service actions.
-- `call greeter.hello` - Call the `greeter.hello` action.
-- `call greeter.welcome --name John` - Call the `greeter.welcome` action with the `name` parameter.
-- `call products.list` - List the products (call the `products.list` action).
+<!-- <p align="center"> 
+  <img src="images/Signal.gif" alt="Sample signal" width="70%" height="70%">
+</p> -->
+
+<!-- TABLE OF CONTENTS -->
+<h2 id="table-of-contents"> :book: Table of Contents</h2>
+
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#about-the-project"> ➤ About The Project</a></li>
+    <li><a href="#features"> ➤ Features</a></li>
+    <li><a href="#folder-structure"> ➤ Folder Structure</a></li>
+    <li><a href="#running-local"> ➤ Running Locally</a></li>
+    <li><a href="#restful"> ➤ RESTful URLs</a></li>
+    <li>
+      <a href="#reqandres"> ➤Requests and Responses</a>
+    </li>
+    <!--<li><a href="#experiments">Experiments</a></li>-->
+    <li><a href="#feedback"> ➤ Feedback</a></li>
+  </ol>
+</details>
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<!-- ABOUT THE PROJECT -->
+<h2 id="about-the-project"> :pencil: About The Project</h2>
+
+<p align="justify"> 
+This is a Webhook Microservice project. Moleculer, a microservices framework, was used to create this microservice. The goal of this project is to create an API that allows many webhooks to be invoked at the same time.
+</p>
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<!-- PREREQUISITES -->
+<h2 id="features"> :fork_and_knife: Features</h2>
+
+<!-- [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) <br>
+[![Made withJupyter](https://img.shields.io/badge/Made%20with-Jupyter-orange?style=for-the-badge&logo=Jupyter)](https://jupyter.org/try) <br> -->
+
+<!--This project is written in Python programming language. <br>-->
+The following are the features provided by this microservice:
+* Registers new target URL's into system
+* Lists out all the target URL's
+* Updates the specific target URL
+* Invokes all the target URL's parallely
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<!-- :paw_prints:-->
+<!-- FOLDER STRUCTURE -->
+<h2 id="folder-structure"> :cactus: Folder Structure</h2>
+    
+    └── webhooks-microservice-dyte/
+        ├── data/
+        │   └── webhooks.db
+        ├── mixins/
+        │   └── db.mixin.js
+        ├── public/
+        │   └── index.html
+        ├── services/
+        │   ├── api-service.js
+        │   └── webhooks.service.js
+        ├── utils/
+        │   └── sendRequest.js
+        ├── .dockerignore
+        ├── .editorconfig
+        ├── .eslintrc.js
+        ├── .gitignore
+        ├── docker-compose.env
+        ├── docker-compose.yml
+        ├── Dockerfile
+        ├── k8s.yaml
+        ├── moleculer.config.js
+        ├── package-lock.json
+        ├── package.json
+        └── README.md
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<!-- DATASET -->
+<h2 id="running-local"> :floppy_disk: Running Locally</h2>
+<p> 
+  
+Make sure you have [NodeJS](https://nodejs.org/) and the [Mongodb](https://www.mongodb.com/) installed.
+
+```sh
+git clone https://github.com/SreemanthG/webhooks-microservice-dyte.git
+
+cd webhooks-microservice-dyte
+
+npm install
+```
+
+Development
+```sh
+npm run dev
+```
+
+Production
+```sh
+npm run start
+```
+
+Docker
+```sh
+docker-compose up
+```
+<br />
+<!-- 
+<p align="center">
+  <img src="images/Human Activity.gif" alt="Human Activity.gif" display="inline-block" width="60%" height="50%">
+</p>
 
 
-## Services
-- **api**: API Gateway services
-- **greeter**: Sample service with `hello` and `welcome` actions.
-- **products**: Sample DB service. To use with MongoDB, set `MONGO_URI` environment variables and install MongoDB adapter with `npm i moleculer-db-adapter-mongo`.
+ _The WISDM dataset is publicly available. Please refer to the [Link](https://archive.ics.uci.edu/ml/datasets/WISDM+Smartphone+and+Smartwatch+Activity+and+Biometrics+Dataset+)_ 
 
-## Mixins
-- **db.mixin**: Database access mixin for services. Based on [moleculer-db](https://github.com/moleculerjs/moleculer-db#readme)
+  The following table shows the 18 activities represented in data set.
+</p> -->
+
+<!-- <p align="center">
+  <img src="images/Activity Table.png" alt="Table1: 18 Activities" width="45%" height="45%">
+</p> -->
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<!-- ROADMAP -->
+<h2 id="restful"> :dart: RESTful URLs</h2>
+
+### Good URL examples
+* Registering a target URL:
+    * POST http://localhost:3000/api/webhooks/register
+* Listing out target URL's:
+    * POST http://localhost:3000/api/webhooks/list
+* Updating a target URL:
+    * PUT http://localhost:3000/api/webhooks/update/:id
+* Trigerring all the target URL's:
+    * GET http://localhost:3000/api/webhooks/ip
+
+### Bad URL examples
+* Registering a target URL:
+    * GET http://localhost:3000/api/webhooks/register
+* Listing out target URL's:
+    * POST http://localhost:3000/list
+* Updating a target URL:
+    * PUT http://localhost:3000/api/webhooks/update/
+* Trigerring all the target URL's:
+    * GET http://localhost:3000/api/webhooks/trigger
+<br />
 
 
-## Useful links
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-* Moleculer website: https://moleculer.services/
-* Moleculer Documentation: https://moleculer.services/docs/0.14/
+<!-- PREPROCESSING -->
+<h2 id="reqandres"> :hammer: Requests and Responses</h2>
 
-## NPM scripts
+### API Resources
 
-- `npm run dev`: Start development mode (load all services locally with hot-reload & REPL)
-- `npm run start`: Start production mode (set `SERVICES` env variable to load certain services)
-- `npm run cli`: Start a CLI and connect to production. Don't forget to set production namespace with `--ns` argument in script
-- `npm run lint`: Run ESLint
-- `npm run ci`: Run continuous test mode with watching
-- `npm test`: Run tests & generate coverage report
-- `npm run dc:up`: Start the stack with Docker Compose
-- `npm run dc:down`: Stop the stack with Docker Compose
+  - [POST /register](#post-register)
+  - [POST /list](#post-list)
+  - [PUT /update/:id](#put-update)
+  - [GET /ip](#get-ip)
+
+
+### POST /register
+
+Example: http://localhost:3000/api/webhooks/register
+
+Request body(JSON):
+    
+      {
+      
+        "targetUrl":"http://www.google.com"
+      
+      }
+
+
+Response body:
+<br />
+      
+
+
+      {
+        "_id": "iEKJVNnLPYGwPvVk"
+      }
+
+ <br />
+
+### POST /list
+
+Example: http://localhost:3000/api/webhooks/register
+
+Request body(JSON):
+    
+      {}
+
+
+Response body:
+<br />
+      
+
+
+      {
+        "rows": [
+            {
+                "_id": "iEKJVNnLPYGwPvVk",
+                "targetUrl": "http://www.google.com/"
+            }
+        ]
+        "total": 1,
+        "page": 1,
+        "pageSize": 10,
+        "totalPages": 1
+      }
+ <br />
+
+### PUT /update/:id
+
+Example: http://localhost:3000/api/webhooks/update/JAP611ZUF0yaVaLt
+
+Request body(JSON):
+    
+      {
+        "newTargetUrl":"http://www.youtube.com"
+      }
+
+
+Response body:
+<br />
+
+      {
+        "_id": "JAP611ZUF0yaVaLt",
+        "targetUrl": "http://www.google.com/"
+      }
+ <br />
+
+### GET /ip
+
+Example: http://localhost:3000/api/webhooks/ip
+
+Request body(JSON):
+    
+      {
+        "ipAddress":"198.168.0.1"
+      }
+
+
+Response body:
+<br />
+
+      [
+        {
+            "targetUrl": "http://www.google.com/",
+            "_id": "JAP611ZUF0yaVaLt",
+            "status": 201,
+            "retries": 0
+        }
+      ]
+ <br />
+
+    
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<!-- PRE-PROCESSED DATA -->
+<h2 id="feedback"> :diamond_shape_with_a_dot_inside: Feedback</h2>
+
+<p align="justify"> 
+  Feel free to send feedback on [Twitter](https://twitter.com/GSreemanth) or [file an issue](https://github.com/SreemanthG/webhooks-microservice-dyteissues/new). Feature requests are always welcome. You can contact me at sreemanth2001@gmail.com
+</p>
+

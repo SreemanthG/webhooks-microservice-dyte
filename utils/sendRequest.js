@@ -1,28 +1,6 @@
 const axios = require("axios");
 
 
-// const sendRequest = (webhooks, ipAddress, logArray = []) => {
-//     // console.log(webhooks);
-
-//     webhooks.forEach((wh,i) => {
-//         axios.post(wh.targetUrl, {ipAddress, timestamp:Date.now()})
-//         .then((res)=>{
-//             logArray.push({index:i,statusCode:res.status, error:false})
-//             console.log(logArray);
-//         })
-//         .catch((err)=>{
-//             if(!err.response){
-//                 logArray.push({index:i,errorMessage:err.message, error:true})
-//             } else{
-//                 logArray.push({index:i,statusCode:err.response.status, error:true})
-//             }
-//             console.log(logArray);
-//         })
-//     });
-
-// }
-
-
 const sendRequest = async (webhooks, ipAddress) => {
     const concurrencyLimit = 10;
     let results = [];
@@ -50,11 +28,14 @@ const axiosPost = (url,ipAddress,retries=0,maxRetries=5) => {
     return new Promise((resolve,reject) => {
             axios.post(url,{ipAddress, timestamp:Date.now()})
             .then((res)=>{
-                resolve(res.status);
+                resolve({status:res.status,retries:retries});
             })
             .catch((err)=>{
                 if(retries==maxRetries){
-                    resolve(err.response.status)
+                    if(err.response)
+                    resolve({status:err.response.status,retries:retries})
+                    else
+                    resolve({status:err.message,retries:retries})
                 } else{
                     resolve(axiosPost(url,ipAddress,retries+1));
                 }
