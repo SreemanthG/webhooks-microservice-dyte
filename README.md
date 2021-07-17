@@ -1,7 +1,7 @@
 [![Moleculer](https://badgen.net/badge/Powered%20by/Moleculer/0e83cd)](https://moleculer.services)
 
 <p align="center"> 
-  <img src="images/logo.png" alt="Webhooks Microservice Logo" height="80px">
+  <img src="https://raw.githubusercontent.com/SreemanthG/webhooks-microservice-dyte/master/images/logo.PNG?token=ALORTLESOJCVGXE7H5YPZFDA7Q7QO" alt="Webhooks Microservice Logo" height="80px">
 </p>
 <h1 align="center"> Webhooks Microservice </h1>
 <h3 align="center"> A Webhooks Microservice using Node and Moleculer </h3>  
